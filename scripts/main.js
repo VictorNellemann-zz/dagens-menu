@@ -33,13 +33,18 @@ switch (currentDay) {
 
 let timeOfDay = new Date();
 timeOfDay = timeOfDay.getHours();
+
 console.dir(`Time of day: ${timeOfDay}`);
 
-let menuType;
-if (timeOfDay < 16) {
 
-} else {
-
+let menuType = (timeOfDay) => {
+    if (timeOfDay < 14) {
+        return menuType = 'frokost';
+    } else {
+        return menuType = 'aften';       
+    }
 };
 
-console.dir(`Menutype: ${menuType}`);
+menuType(timeOfDay);
+
+console.dir(menuType);
