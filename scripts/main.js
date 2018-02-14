@@ -1,50 +1,72 @@
+function setDayOfWeek() {
+    let currentDay = new Date();
+    currentDay = currentDay.getDay();
+    switch (currentDay) {
+        case 1:
+            currentDay = 'mandag';        
+            break;
+        case 2:
+            currentDay = 'tirsdag';        
+            break;
+        case 3:
+            currentDay = 'onsdag';        
+            break;
+        case 4:
+            currentDay = 'torsdag';        
+            break;
+        case 5:
+            currentDay = 'fredag';        
+            break;
+        case 6:
+            currentDay = 'lørdag';        
+            break;
+        case 0:
+            currentDay = 'søndag';        
+            break;
+        default:
+            currentDay = 'Fejl - ukendt dag'
+            break;
+    };
+    return currentDay;
+}
 
-let currentDay = new Date();
-currentDay = currentDay.getDay();
+currentDay = setDayOfWeek();
 console.dir(`Weekday: ${currentDay}`);
-
-switch (currentDay) {
-    case 1:
-        currentDay = 'mandag';        
-        break;
-    case 2:
-        currentDay = 'tirsdag';        
-        break;
-    case 3:
-        currentDay = 'onsdag';        
-        break;
-    case 4:
-        currentDay = 'torsdag';        
-        break;
-    case 5:
-        currentDay = 'fredag';        
-        break;
-    case 6:
-        currentDay = 'lørdag';        
-        break;
-    case 0:
-        currentDay = 'søndag';        
-        break;
-    default:
-        currentDay = 'Fejl - ukendt dag'
-        break;
-};
-
 
 let timeOfDay = new Date();
 timeOfDay = timeOfDay.getHours();
-
 console.dir(`Time of day: ${timeOfDay}`);
 
+// -----------------------------------------------------------------
 
-let menuType = (timeOfDay) => {
-    if (timeOfDay < 14) {
-        return menuType = 'frokost';
-    } else {
-        return menuType = 'aften';       
+class Menu {
+    constructor(menuType, dagensRetter) {
+        this.menuKort = menuType;
+        this.dagensRetter = dagensRetter;
     }
+}
+
+let menuType = '';
+let dagensRetter = {
+    'Forret': 'Suppe', 
+    'Hovedrret': 'Dessert',
+    'Desser': 'Kaffe og is'
 };
 
-menuType(timeOfDay);
+function createMenu(menuType, dagensRetter) {
+    if (this.timeOfDay < 12) {
+        let menuType = 'Frokost';
+        const menuFrokost = new Menu(menuType, dagensRetter);
+        console.dir(menuFrokost);
+        console.dir('hej');
+    } else {
+        let menuType = 'Aften';
+        const menuAften = new Menu(menuType, dagensRetter);
+        console.dir(menuAften);
+        console.dir('farvel');
+    }
+}
 
-console.dir(menuType);
+createMenu(menuType, dagensRetter);
+
+//let dagensRetterIndex = 0, dagensRetterIndex < this.dagensRetter.length, dagensRetterIndex++
